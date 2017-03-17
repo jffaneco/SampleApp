@@ -70,18 +70,6 @@ build-iPhoneSimulator/
 
 # Ignore Spring files.
 /spring/*.pid
-Gemfile
-Gemfile.lock
-README.md
-Rakefile
-app/
-bin/
-config.ru
-config/
-db/
-layout_file
-lib/
-log/
-public/
-test/
-vendor/
+
+
+
