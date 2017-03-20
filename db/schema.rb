@@ -12,13 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20170320113146) do
 
-  create_table "static_pages", force: :cascade do |t|
-    t.string   "home"
-    t.string   "help"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
