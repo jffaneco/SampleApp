@@ -1,9 +1,10 @@
 class User < ApplicationRecord
 
+  has_many :microposts, dependent: :destroy # relacao de 1 para muitos
+
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
   before_create :create_activation_digest
-
 
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -79,6 +80,13 @@ class User < ApplicationRecord
     UserMailer.password_reset(self).deliver_now
   end
 
+  # Defines a proto-feed.
+  # See "Following users" for the full implementation.
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
+
+
   private
 
     # Converts email to all lower-case.
@@ -104,4 +112,7 @@ class User < ApplicationRecord
       end
     end
   end
+
+
+
 end
